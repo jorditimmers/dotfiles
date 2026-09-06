@@ -2,7 +2,7 @@
 
 set -e # Exit immediately if a command fails
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/Development/dotfiles"
 
 echo "🚀 Starting dotfiles installation..."
 
