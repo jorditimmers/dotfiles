@@ -1,0 +1,71 @@
+[settings]
+minimum_release_age_excludes = ["claude"]
+
+[bootstrap.packages]
+"brew:bash" = { version = "latest", os = "macos" }
+"brew:zsh" = { version = "latest", os = "macos" }
+"brew:zsh-completions" = { version = "latest", os = "macos" }
+"brew:openssl@3" = { version = "latest", os = "macos" }
+"brew:task" = { version = "latest", os = "macos" }
+"brew-cask:font-maple-mono-nf" = { version = "latest", os = "macos" }
+
+[tools]
+awscli = { version = "latest", symlink_bins = "true" }
+bat = "latest"
+bun = "latest"
+codex = "latest"
+copilot = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+java = "latest"
+lazygit = "latest"
+gradle = "latest"
+maven = "latest"
+neovim = "latest"
+node = "latest"
+opencode = "latest"
+claude = "latest"
+pi = "latest"
+python = "latest"
+ripgrep = "latest"
+rust = "latest"
+starship = "latest"
+terraform = "latest"
+tmux = "latest"
+tree-sitter = "latest"
+uv = "latest"
+
+[tasks."update:system"]
+description = "Update Homebrew packages (macOS only)."
+run = """
+  command -v brew >/dev/null 2>&1 || { echo "no brew, skipping"; exit 0; }
+  brew update && brew upgrade
+"""
+
+[tasks."update:completions"]
+description = "Refresh Zsh completion dump."
+run = "zsh -c 'autoload -U compinit && compinit'"
+
+[tasks."update:plugins"]
+description = "Update Neovim and zsh plugins."
+run = """
+  echo "==> neovim"
+  nvim --headless '+Lazy! sync' +qa
+
+  echo "==> zsh plugins"
+  # zfetch's plugin map is built by .zshrc, so read it from an interactive zsh
+  zsh -ic 'for k in ${(k)plugins}; do echo "$plugins[$k]"; done' |
+  while read -r dir; do
+    git -C "$dir" pull --quiet --recurse-submodules && echo "  $(basename "$dir")"
+  done
+"""
+
+[tasks."update:all"]
+description = "Update system packages, tools, plugins, and this repository."
+run = [
+  { task = "update:system" },
+  { task = "update:completions" },
+  { task = "update:plugins" },
+]

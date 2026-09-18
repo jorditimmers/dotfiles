@@ -41,6 +41,7 @@ fi
 echo "📁 Creating config directories..."
 mkdir -p ~/.config/starship
 mkdir -p ~/.config/herdr
+mkdir -p ~/.config/mise
 mkdir -p "$HOME/Library/Application Support/Code/User"
 
 # 5. Create Symlinks
@@ -61,6 +62,9 @@ fi
 
 # Herdr
 [ -f "$DOTFILES_DIR/herdr/config.toml" ] && ln -sf "$DOTFILES_DIR/herdr/config.toml" ~/.config/herdr/config.toml
+
+# Mise
+[ -f "$DOTFILES_DIR/mise/config.toml" ] && ln -sf "$DOTFILES_DIR/mise/config.toml" ~/.config/mise/config.toml
 
 # VS Code
 [ -f "$DOTFILES_DIR/vscode/settings.json" ] && ln -sf "$DOTFILES_DIR/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
