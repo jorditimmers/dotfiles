@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Aura theme palette (https://github.com/daltonmenezes/aura-theme)
-palette = "aura"
+# Catppuccin Mocha palette (https://github.com/catppuccin/starship)
+palette = "catppuccin_mocha"
 
 format = """
 $directory\
@@ -19,22 +19,22 @@ right_format = "$time"
 
 add_newline = false
 
-[palettes.aura]
-white = "#edecee"
-gray = "#6d6d6d"
-purple = "#a277ff"
-green = "#61ffca"
-orange = "#ffca85"
-pink = "#f694ff"
-blue = "#82e2ff"
-red = "#ff6767"
+[palettes.catppuccin_mocha]
+text = "#cdd6f4"
+overlay0 = "#6c7086"
+mauve = "#cba6f7"
+green = "#a6e3a1"
+peach = "#fab387"
+pink = "#f5c2e7"
+sky = "#89dceb"
+red = "#f38ba8"
 
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
 
 [directory]
-style = "bold purple"
+style = "bold mauve"
 format = "[$path]($style) "
 truncation_length = 3
 truncation_symbol = "…/"
@@ -45,33 +45,33 @@ style = "pink"
 format = "[$branch]($style) "
 
 [git_status]
-style = "orange"
+style = "peach"
 stashed = ""
 format = '([\[$all_status$ahead_behind\]]($style) )'
 
 [nodejs]
 symbol = "󰎙"
-style = "blue"
+style = "sky"
 format = "[$symbol $version]($style) "
 
 [java]
 symbol = ""
-style = "blue"
+style = "sky"
 format = "[$symbol $version]($style) "
 
 [kotlin]
 symbol = "\U000f1219"
-style = "blue"
+style = "sky"
 format = "[$symbol $version]($style) "
 
 [aws]
 symbol = ""
-style = "orange"
+style = "peach"
 format = "[$symbol $profile]($style) "
 
 [cmd_duration]
 min_time = 3000
-style = "gray"
+style = "overlay0"
 format = "[took $duration]($style) "
 
 [jobs]
@@ -82,5 +82,5 @@ format = "[$symbol$number]($style) "
 [time]
 disabled = false
 time_format = "%R"
-style = "gray"
+style = "overlay0"
 format = "[$time]($style)"

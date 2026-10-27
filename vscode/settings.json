@@ -1,6 +1,5 @@
 {
     "update.mode": "none",
-    "workbench.iconTheme": "symbols",
     "git.ignoreMissingGitWarning": true,
     "explorer.confirmDelete": false,
     "security.workspace.trust.untrustedFiles": "open",
@@ -271,4 +270,5 @@
         "editor.formatOnType": false,
     },
     "workbench.activityBar.location": "bottom",
+    "workbench.iconTheme": "bearded-icons",
 }
